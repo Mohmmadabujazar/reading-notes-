@@ -1,201 +1,190 @@
-# Git Push
-
-> What Does git push Do?
-git push updates the remote branch with local commits. It is one of the four commands in Git that prompts interaction with the remote repository. You can also think of git push as update or publish.
-
->By default, git push only updates the corresponding branch on the remote. So, if you are checked out to the master branch when you execute git push, then only the master branch will be updated. It's always a good idea to use git status to see what branch you are on before pushing to the remote.
-
->How to Use git push
-After you make and commit changes locally, you can share them with the remote repository using git push. Pushing changes to the remote makes your commits accessible to others who you may be collaborating with. This will also update any open pull requests with the branch that you're working on.
-
->As best practice, it's important to run the git pull command before you push any new changes to the remote branch. This will update your local branch with any new changes that may have been pushed to the remote from other contributors. Pulling before you push can reduce the amount of merge conflicts you create on GitHub - allowing you to resolve them locally before pushing your changes to the remote branch.
-
->Common usages and options for git push
-git push -f: Force a push that would otherwise be blocked, usually because it will delete or overwrite existing commits (Use with caution!)
-git push -u origin [branch]: Useful when pushing a new branch, this creates an upstream tracking branch with a lasting relationship to your local branch
-git push --all: Push all branches
-git push --tags: Publish tags that aren't yet in the remote repository
-You can see all of the options with git push in git-scm's documentation.
-
->Why can't I push?
-If you are trying to git push but are running into problems, there are a few common solutions.
-
->Check your branch
-Check what branch you are currently on with git status. If you are working on a protected branch, like master, you may be unable to push commits directly to the remote. If this happens to you, it's OK! You can fix this a few ways.
-
->Work was not yet on any branch
-Create and checkout to a new branch from your current commit: git checkout -b [branchname]
-Then, push the new branch up to the remote: git push -u origin [branchname]
-Accidentally committed to the wrong branch
-Checkout to the branch that you intended to commit to: git checkout [branchname]
-Merge the commits from the branch that you did accidentally commit to: git merge [master]
-Push your changes to the remote: git push
-Fix the other branch by checking out to that branch, finding what commit it should be pointed to, and using git reset --hard to correct the branch pointer
-Related Terms
-git commit -m "descriptive message": Records file snapshots permanently in version history.
-git clone [url]: Clone (download) a repository that already exists on GitHub, including all of the files, branches, and commits.
-git status: Always a good idea, this command shows you what branch you're on, what files are in the working or staging directory, and any other important information.
-git pull: Updates your current local working branch with all new commits from the corresponding remote branch on GitHub. git pull is a combination of git fetch and git merge.
-
-# Git Add
+# HTML
 ```
-The git add command adds new or changed files in your working directory to the Git staging area.
+Chapter 2 (Links to an external site.)
+Text (Links to an external site.)
+Structural markup:
+the elements that you can use to describe both headings and paragraphs
 
-git add is an important command - without it, no git commit would ever do anything. Sometimes, git add can have a reputation for being an unnecessary step in development. But in reality, git add is an important and powerful tool. git add allows you to shape history without changing how you work.
+headings
 
-When do you use git add?
-git add README.md
-As you're working, you change and save a file, or multiple files. Then, before you commit, you must git add. This step allows you to choose what you are going to commit. Commits should be logical, atomic units of change - but not everyone works that way. Maybe you are making changes to files that aren't logical or atomic units of change. git add allows you to systematically shape your commits and your history anyway.
+HTML has six “levels” of headings:
 
-What Does Git Add Do?
-git add [filename] selects that file, and moves it to the staging area, marking it for inclusion in the next commit. You can select all files, a directory, specific files, or even specific parts of a file for staging and commit.
+(h1) is used for main headings
 
-This means if you git add a deleted file the deletion is staged for commit. The language of "add" when you're actually "deleting" can be confusing. If you think or use git stage in place of git add, the reality of what is happening may be more clear.
+(h2) is used for subheadings
 
-git add and git commit go together hand in hand. They don't work when they aren't used together. And, they both work best when used thinking of their joint functionality.
+(h3) element is used If there are further sections under the subheadings
 
-How to Use git add
-Common usages and options for git add
-git add <path>: Stage a specific directory or file
-git add .: Stage all files (that are not listed in the .gitignore) in the entire repository
-git add -p: Interactively stage hunks of changes
-You can see all of the many options with git add in git-scm's documentation.
+heading tags write between <>
+example :
 
-Examples of git add
-git add usually fits into the workflow in the following steps:
+This is a Main Heading
+This is a Level 2 Heading (Links to an external site.)
+This is a Level 3 Heading (Links to an external site.)
+This is a Level 4 Heading (Links to an external site.)
+This is a Level 5 Heading (Links to an external site.)
+This is a Level 6 Heading (Links to an external site.)
+Paragraph
 
-Create a branch: git branch update-readme
-Checkout to that branch: git checkout update-readme
-Change a file or files
-Save the file or files
-Add the files or segments of code that should be included in the next commit: git add README.md
-Commit the changes: git commit -m "update the README to include links to contributing guide"
-Push the changes to the remote branch: git push -u origin update-readme
-But, git add could also be used like:
+To create a paragraph, surround the words that make up the paragraph with an opening (p) tag and closing (/p) tag.
 
-Create a branch: git branch update-readme
-Checkout to that branch: git checkout update-readme
-Change a file or files
-Save the file or files
-Add only one file, or one part of the changed file: git add README.md
-Commit the first set of changes: git commit -m "update the README to include links to contributing guide"
-Add another file, or another part of the changed file: git add CONTRIBUTING.md
-Commit the second set of changes: git commit -m "create the contributing guide"
-(Repeat as necessary)
-Push the changes to the remote branch: git push -u origin update-readme
-git add All Files
-Staging all available files is a popular, though risky, operation. This can save time, but the risks are two-fold:
+paragraph tags write between <>
+Semantic markup:
+which provides extra information; such as where emphasis is placed in a sentence, that something you have written is a quotation (and who said it), the meaning of acronyms, and so on
 
-Poorly thought out history
-By staging all available changes, the clarity of your history will likely suffer. Being able to shape your history is one of the greatest advantages of using Git. If your commits are too large, contain unrelated changes, or are unclearly described in the commit message, you will lose the benefits of viewing and changing history.
+There are some text elements that are not intended to affect the structure of your web pages, but they do add extra information to the pages — they are known as semantic markup.
 
-Accidentally staging and committing files
-By using an option to add all files at once, you may accidentally stage and commit a file. Most common flags don't add files tracked in the .gitignore file. But, any file not listed in the .gitignore file will be staged and committed. This applies to large binary files, and files containing sensitive information like passwords or authentication tokens.
+Strong
+The use of the (strong) element indicates that its content has strong importance. For example, the words contained in this element might be said with strong emphasis.
 
-Deciding to stage all files
-If the time is right to stage all files, there are several commands that you can choose from. As always, it's very important to know what you are staging and committing.
+strong tags write between <>
+example :
 
-git add -A: stages all files, including new, modified, and deleted files, including files in the current directory and in higher directories that still belong to the same git repository
-git add .: adds the entire directory recursively, including files whose names begin with a dot
-git add -u: stages new and modified files only, NOT deleted files
-New files	Modified files	Deleted files	Files with names beginning with a dot	Current directory	Higher directories
-git add -A	Yes	Yes	Yes	Yes	Yes	Yes
-git add .	Yes	Yes	Yes	Yes	Yes	No
-git add -u	No	Yes	Yes	Yes	Yes	Yes
-git add A Folder or Specific File
-The safest and clearest way to use git add is by designating the specific file or directory to be staged. The syntax for this could look like:
+“<p>Beware: Pickpockets operate in this area.</p>
 
-git add directory/: Stage all changes to all files within a directory titled directory
-git add README.md: Stage all changes within the README.md file
+This toy has many small pieces and is not suitable for children under five years old.
 
-Undo Added Files
-Before undoing a git add, you should first be sure that you won't lose any work. There's no way to "revert" an add in the same way you can revert a commit, but you can move the files out of the staging area.
+”
 
-For example, if you have a staged file, and then you make more changes to that file in your working directory. Now, the versions in your working directory and your staging area are different. If you take action to remove the changed version of the file from the staging area, the changes that were in your working directory but not staged will be overwritten.
+Changes to Content
+S tag
+The (s) element indicates something that is no longer accurate or relevant (but that should not be deleted). Visually the content of an (s) element will usually be displayed with a line through the center.
 
-To avoid this, first stage all changes, then unstage them together, or commit the changes and reset back before the commit happened.
+s tags write between <>
+example :
 
-Using git reset to undo git add
-git reset is a flexible and powerful command. One of its many use cases is to move changes out of the staging area. To do this, use the "mixed" level of reset, which is the default.
+Laptop computer:
 
-To move staged changes from the staging area to the working directory without affecting committed history, first make sure that you don't have any additional changes to the files in question as mentioned above. Then, type git reset HEAD (aka git reset --mixed HEAD).
+Was $995
 
-Related Terms
-git status: Always a good idea, this command shows you what branch you're on, what files are in the working or staging directory, and any other important information.
-git checkout [branch-name]: Switches to the specified branch and updates the working directory.
-git commit -m "descriptive message": Records file snapshots permanently in version history.
-git push: Uploads all local branch commits to the remote.
+Now only $375
+
+Auth or Details
+(address)
+The (address) element has quite a specific use: to contain contact details for the author of the page.
+
+address tags write between <>
+example :
+
+homer@example.org
+
+742 Evergreen Terrace, Springfield.
 ```
-# Git Commit
+# CSS
 ```
-git commit creates a commit, which is like a snapshot of your repository. These commits are snapshots of your entire repository at specific times. You should make new commits often, based around logical units of change. Over time, commits should tell a story of the history of your repository and how it came to be the way that it currently is. Commits include lots of metadata in addition to the contents and message, like the author, timestamp, and more.
+Chapter 10 (Links to an external site.)
+Introducing CSS (Links to an external site.)
+CSS allows you to create rules that specify how the content of an element should appear. For example, you can specify that the background of the page.
 
-How Git Commit Works
-Commits are the building blocks of "save points" within Git's version control.
+CSS Associates Style rules with HTML elements: (Links to an external site.)
+CSS works by associating rules with HTML elements. These rules govern how the content of specified elements should be displayed. A CSS rule contains two parts: a selector and a declaration.
+Selectors
+indicate which element the rule applies to. The same rule can apply to more than one element if you separate the element names with commas.
 
-git commit -m "update the README.md with link to contributing guide"
-Commits shape history
-By using commits, you're able to craft history intentionally and safely. You can make commits to different branches, and specify exactly what changes you want to include. Commits are created on the branch that you're currently checked out to (wherever HEAD is pointing) so it's always a good idea to run git status before making a commit, to check that you're checked-out to the branch that you intend to be. Before you commit, you will need to stage any new changes that you'd like to include in the commit using git add [file].
+Declarations
+indicate how the elements referred to in the selector should be styled. Declarations are split into two parts (a property and a value), and are separated by a colon.
 
-Commits are lightweight SHA hashes, objects within Git. As long as you're working with text files, you won't need to worry about how many files you have, how big they are, or how many commits you make. Git can handle it!
+How Elements Are Displayed ? (Links to an external site.)
+CSS declarations sit inside curly brackets and each is made up of two parts: a property and a value, separated by a colon. You can specify several properties in one declaration, each separated by a semi-colon.
+Properties
+indicate the aspects of the element you want to change. For example, color, font, width, height and border.
 
-Committing in two phases
-Commits have two phases to help you craft commits properly. Commits should be logical, atomic units of change that represent a specific idea. But, not all humans work that way. You may get carried away and end up solving two or three problems before you remember to commit! That's OK - Git can handle that. Once you're ready to craft your commits, you'll use git add <FILENAME> to specify the files that you'd like to "stage" for commit. Without adding any files, the command git commit won't work. Git only looks to the staging area to find out what to commit. Staging, or adding, files, is possible through the command line, and also possible with most Git interfaces like GitHub Desktop by selecting the lines or files that you'd like to stage.
+Values
+specify the settings you want to use for the chosen properties. For example, if you want to specify a color property then the value is the color you want the text in these elements to be.
 
-You can also use a handy command, git add -p, to walk through the changes and separate them out, even if they're in the same file.
+HOW Using External CSS ? (Links to an external site.)
+link (Links to an external site.)
+The (link) element can be used in an HTML document to tell the browser where to find the CSS file used to style the page. It is an empty element (meaning it does not need a closing tag), and it lives inside the <head> element. It should use three attributes:
 
-How to Use Git Commit
-Common usages and options for Git Commit
-git commit: This starts the commit process, but since it doesn't include a -m flag for the message, your default text editor will be opened for you to create the commit message. If you haven't configured anything, there's a good chance this will be VI or Vim. (To get out, press esc, then :w, and then Enter. :wink:)
-git commit -m "descriptive commit message": This starts the commit process, and allows you to include the commit message at the same time.
-git commit -am "descriptive commit message": In addition to including the commit message, this option allows you to skip the staging phase. The addition of -a will automatically stage any files that are already being tracked by Git (changes to files that you've committed before).
-git commit --amend: Replaces the most recent commit with a new commit. (More on this later!)
-To see all of the possible options you have with git commit, check out Git's documentation.
+href
+This specifies the path to the CSS file (which is often placed in a folder called css or styles).
 
-How to Undo Commits in Git
-Sometimes, you may need to change history. You may need to undo a commit. If you find yourself in this situation, there are a few very important things to remember:
+type
+This attribute specifies the type of document being linked to. The value should be text/css.
 
-If you are "undoing" a commit that exists on the remote, you could create big problems for your collaborators
-Undoing a commit on work that you only have locally is much safer
-What can go wrong while changing history?
-Changing history for collaborators can be problematic in a few ways. Imagine - You and another collaborator have the same repository, with the same history. But, they make a change that deletes the most recent commit. They continue new commits from the commit directly before that. Meanwhile, you keep working with the commit that the collaborator tried to delete. When they push, they'll have to 'force push', which should show to them that they're changing history. What do you think will happen when you try to push?
+rel
+This specifies the relationship between the HTML page and the file it is linked to. The value should be styleshee
 
-In dramatic cases, Git may decide that the histories are too different and the projects are no longer related. This is uncommon, but a big problem.
+HOW Usi ng Internal CSS ? (Links to an external site.)
+(style) (Links to an external site.)
+You can also include CSS rules within an HTML page by placing them inside a (style) element, which usually sits inside the (head) element of the page.
+```
+# JavaScript
+```
+Chapter 2 (Links to an external site.)
+Basic JavaScript Instructions (Links to an external site.)
+GIVING INSTRUCTIONS:
 
-The most common result is that your git push would return the "deleted" commit to shared history. (First, you would git pull if you were working on the same branch, and then merge, but the results would be the same.) This means that whatever was so important to delete is now back in the repository. A password, token, or large binary file may return without ever alerting you.
+FOR A BROWSER TO FOLLOW Web browsers (and computers in general) approach tasks in a very different way than a human might. Your instructions need to reflect how computers get things done.
 
-git revert
-git revert is the safest way to change history with Git. Instead of deleting existing commits, git revert looks at the changes introduced in a specific commit, then applies the inverse of those changes in a new commit. It functions as an "undo commit" command, without sacrificing the integrity of your repository's history. git revert is always the recommended way to change history when it's possible.
+STATEMENTS
+A script is a series of instructions that a computer can follow one-by-one. Each individual instruction or step is known as a statement. Statements should end with a semicolon.
 
-git reset
-Sometimes, a commit includes sensitive information and needs to actually be deleted. git reset is a very powerful command that may cause you to lose work. By resetting, you move the HEAD pointer and the branch pointer to another point in time - maybe making it seem like the commits in between never happened! Before using git reset:
+COMMENTS
+You should write comments to explain what your code does. They help make your code easier to read and understand. This can help you and others who read your code.
 
-Make sure to talk with your team about any shared commits
-Research the three types of reset to see which is right for you (--soft, --mixed, --hard)
-Commit any work that you don't want to be lost intentionally - work that is committed can be gotten back, but uncommitted work cannot
-git reflog
-If you're changing history and undoing commits, you should know about git reflog. If you get into trouble, the reflog could get you out of trouble. The reflog is a log of every commit that HEAD has pointed to. So, for example, if you use git reset and unintentionally lose commits, you can find and access them with git reflog.
+MULTI-LINE COMMENTS
+To write a comment that stretches over more than one line, you use a multi-line comment, starting with the / * characters and ending with the * / characters. Anything between these characters is not processed· by the JavaScript interpreter.
 
-Updating Commits With Git Commit Amend
-While git commit --amend does change history, it only changes the most recent commit on your current branch. This can be an extremely useful command for commits that:
+SINGLE-LINE COMMENTS
+In a single-line comment, anything that follows the two forward slash characters // on that line will not be processed by the JavaScript interpreter. Singleline comments are often used for short descriptions of what the code is doing.
 
-Haven't been pushed to the remote yet
-Have a spelling error in the commit message
-Don't contain the changes that you'd like to contain
-Examples of Git Commit
-Once you've staged the files that you want to include in your commit, you're ready. Whether you commit in a tool like GitHub Desktop, or through your command line, the commit message is important. Commit messages should be short and descriptive of your change. If you are looking through your repository's history, you'll be guided by the commit messages, so they should tell a story. Commits in the command line can include the message with the following format:
+VARIABLE
+A variable is a good name for this concept because the data stored in a variable can change (or vary) each time a script runs.
 
-git commit -m "git commit message example"
-Commit messages should be present tense and directive, like the following examples:
+Expressions
+An expression evaluates into (results in) a single value. Broadly speaking there are two types of expressions.
 
-git commit -m "create file structure for Git guides"
-git commit -m "translate Git cheat sheet into German"
-git commit -m "update broken URL to Git resources"
-If you'd like to include more context in your commit messages, you can also include an extended commit message.
+EXPRESSIONS THAT JUST ASSIGN A VALUE TO A VARIABLE
+EXPRESSIONS THAT USE TWO OR MORE VALUES TO RETURN A SINGLE VALUE
+Operators
+Expressions rely on things called operators; they allow programmers to create a single value from one or more values.
 
-Related commands
-git add [file]: Snapshots the file in preparation for versioning, adding it to the staging area.
-git status: Always a good idea, this command shows you what branch you're on, what files are in the working or staging directory, and any other important information.
-git push: Uploads all local branch commits to the remote.
-git log: Browse and inspect the evolution of project files.
+Chapter 4 (Links to an external site.)
+Decisions and Loops (Links to an external site.)
+DECISIONS
+Using the results of evaluations, you can decide which path your script should go down.
+
+DECISIONS MAKING
+
+LOOPS
+There are also many occasions where you will want to perform the same set of steps repeatedly.
+
+Loops check a condition. If it returns true, a code block will run. Then the condition will be checked again and if it still returns true, the code block will run again. It repeats until the condition returns false. types of loops:
+
+FOR LOOP
+If you need to run code a specific number of times, use a for loop. (It is the most common loop.) In a for loop, the condition is usually a counter which is used to tell how many times the loop should run
+
+The For Loop The for loop has the following syntax:
+
+for (statement 1; statement 2; statement 3) {
+
+// code block to be executed
+
+}
+
+Example
+for (i = 0; i < 5; i++) {
+
+text += “The number is “ + i + (“br”);
+
+}
+
+WHILE LOOP
+If you do not know how many times the code should run, you can use a while loop. Here the condition can be something other than a counter, and the code will continue to loop for as long as the condition is true
+
+The While Loop The while loop loops through a block of code as long as a specified condition is true.
+
+Syntax
+while (condition) {
+
+// code block to be executed
+
+}
+
+Example
+while (i < 10) {
+
+text += “The number is “ + i; i++;
+} 
 ```
