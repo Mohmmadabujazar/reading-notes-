@@ -16,8 +16,8 @@
 
 | Code 201 Reading Notes | link   |
 | -----------| -----------------------|
-|class-01    |[class-01](class-01.md) |
-|    |[]()   |
+|class-01   |[class-01](class-01.md) |
+|class-02   |[class-02](class-02.md)|
 |    |[]()   |
 |    |[]()   |
 |    |[]()   |
